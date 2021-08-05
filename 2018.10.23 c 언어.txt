@@ -1,0 +1,105 @@
+메뉴 - 보기 - 솔루션 탐색기 : 프로젝트 관리
+
+메뉴 - 보기 - 출력 창
+
+프로젝트 만들기
+파일 - 새로 만들기 - 프로젝트 - 콘솔 응용 프로그램
+
+콘솔
+MFC
+API
+
+콘솔로 작업하기 
+프로젝트를 합치면 솔루션이라고 한다.
+
+솔루션용 디렉터리 만들기 체크해제 하기
+
+확장자
+C :  순수 C문법
+CPP: C와 C++
+
+저장위치
+C:\Users\admin\source\repos
+C:\KHM
+
+프로그램 실행: Ctrl + F5
+
+-------------------------------------------------------
+1) printf 출력하기
+
+\n: 줄바꿈
+//: 주석 잡기
+
+#include "pch.h"
+#include <iostream>
+
+int main()
+{
+	//ex1) printf를 사용하는 가장 기본적인 방법
+	printf("호랑이\n");
+	
+	//ex2)
+	printf("호\n랑\n이\n");
+	
+	//ex3) %d는 콤마 뒤에 있는 것으로 대체 된다.
+	printf("%d토끼\n", 30);
+	printf("토%d끼\n", 40);
+	
+	//ex4) %d는 갯수를 맞춰준다.
+	printf("%d호 %d랑 %d이\n", 10, 20, 30);
+	printf("무궁화 꽃이\n %d송이 피었습니다.\n", 10);
+	
+	//ex5) %d 사이에는 자리수를 얘기하고 부족한 부분은 0으로 채워진다.
+	printf("%d\n",123); //123
+	printf("%05d\n", 123); //00123
+	printf("%07d\n", 123); //0000123
+
+	//ex6) %c: '문자', %d: 숫자, %s: "문자열", %p: 16진수(8자리 모두 출력), %f: 실수 
+	printf("%c %d %s %p %f  \n", 'a', 35, "김현민", 15, 3.14);
+	// %x: 16진수의 크기에 맞춘다.
+	printf("%p %x \n", 123456, 123456);
+
+	//ex7) apple 이름의 메모리를 사용한다.
+	char apple = 100;
+	printf("%d\n", apple);
+	
+	//ex8) 동일한 이름의 변수명을 사용할 수 없다.
+	// 만들기 전에 사용할 수 없다.
+	// printf("%d", banana);
+	char banana = 123;
+	printf("%d\n", banana);
+
+	//ex9) 변수를 여러개 만들 때
+	char a=10, b=20, c=30;
+	printf("%d %d %d \n", a, b, c);
+
+	//ex10) 연산에 대한 결과가 %d와 짝이 된다.
+	printf("%d \n", 15+4);
+	printf("%d %d %d %d %d \n", 15 + 4, 15 - 4, 15 * 4, 15 / 4, 15 % 4);
+
+	//ex11) 변수에 대한 연산이 가능하다.
+	char aa = 15, bb = 4;
+	printf("%d\n", aa + bb);
+	printf("%d\n", aa - bb);
+	printf("%d\n", aa * bb);
+	printf("%d\n", aa / bb);
+	printf("%d\n", aa % bb);
+
+	//ex12) 변수 연산 
+	char a1 = 3, a2 = 4, a3 = 5;
+	printf("%d\n", (a1 + a2) * a3); 
+	printf("%d\n", a1 + (a2 * a3));
+
+	//ex13) 변수의 주소를 알고 싶으면 &을 붙힌다.
+	char Orange = 100;
+	// 값과 주소 출력
+	printf("%d %d\n", Orange, &Orange);
+	// 주소를 출력할 때는 %p를 사용하는 것이 좋다.
+	printf("%d %p\n", Orange, &Orange);
+	// 주소는 절대 중복되지 않는다.
+	printf("%p %p\n", &aa, &bb);
+	// 결과를 예상할 수 없다. 이런 프로그램은 쓰지 않는다.
+	printf("%d\n", &aa + 100);
+
+}
+
