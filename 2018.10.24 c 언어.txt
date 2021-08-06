@@ -1,0 +1,191 @@
+산술
+비교
+논리 
+
+4대 제어문
+
+1. if문
+
+#include "pch.h"
+#include <iostream>
+
+int main()
+{
+
+	printf("호랑이\n");
+
+	// ex1) if문의 기본 꼴
+	// true와 false를 사용
+	/*if (true)
+	{
+		printf("사자\n");
+		printf("사슴\n");
+	};
+	printf("코끼리\n");
+	*/
+
+	// ex2) 0은 false 나머지는 true
+	if (10)
+	{
+		printf("호랑이\n");
+	}
+
+	// ex3) 비교 연산자
+	/*if (3>2)
+	{
+		printf("호랑이1\n");
+	}
+	if (3<2)
+	{
+		printf("호랑이2\n");
+	}
+	if (3>=2)
+	{
+		printf("호랑이3\n");
+	}
+	if (3<=2)
+	{
+		printf("호랑이4\n");
+	}
+	if (3==2)
+	{
+		printf("호랑이5\n");
+	}
+	if (3!=2)
+	{
+		printf("호랑이6\n");
+	} */
+
+	// ex4) 산술과 비교 연산자
+	// 비교 연산자 20>a>10 이렇게는 되지 않는다. 한 번만 사용
+	/*char a = 10, b = 20;
+	if (a<b)
+	{
+		printf("호랑이4\n");
+	}
+	if (a + 3 > b - 11)
+	{
+		printf("호랑이5\n");
+	}
+	*/
+
+	// ex5)
+	/*printf("집에서 출발 합니다\n");
+	
+	if (1)
+	{
+		printf("놀이동산 도착\n");		
+		
+		if (1)
+		{
+			printf("동물원 입장\n");			
+			
+			if (1)
+			{
+				printf("물개쇼 보자\n");
+			}
+		}
+		
+		if (0)
+		{
+			printf("식물원 입장\n");
+		}
+
+	}
+	printf("이제 집 가자\n");
+	*/
+
+	//ex6) if-else
+	/*char num = 46;
+	if (num%2==0)
+	{
+		printf("짝수\n");
+	}
+	else
+	{
+		printf("홀수\n");
+	}*/
+
+	// ex7)
+	/*char num = 36;
+	char a = 0, b = 0;
+	printf("%d %d\n", a, b);
+
+	a = num / 10;
+	b = num % 10;
+	printf("%d %d\n", a, b);
+
+	if (a%2==0)
+	{
+		if (b%2==0)
+		{
+			printf("짜장면\n");
+		}
+		else
+		{
+			printf("짬뽕\n");
+		}
+	} 
+	else
+	{
+		if (b % 2 == 0)
+		{
+			printf("우동\n");
+		}
+		else
+		{
+			printf("탕수육\n");
+		}
+	}*/
+
+	/*
+	char num = 35;
+	char a = 0, b = 0;
+	char c = num * 4;
+	printf("%d\n", c);
+	num = c;
+	num = num % 100;
+	printf("%d %d\n", a, b);
+
+	a = num / 10;
+	b = num % 10;
+	printf("%d %d\n", a, b);
+
+	if (a % 2 == 0)
+	{
+		if (b % 2 == 0)
+		{
+			printf("짜장면\n");
+		}
+		else
+		{
+			printf("짬뽕\n");
+		}
+	}
+	else
+	{
+		if (b % 2 == 0)
+		{
+			printf("우동\n");
+		}
+		else
+		{
+			printf("탕수육\n");
+		}
+	}
+	*/
+	
+	// ex8) char의 범위
+	// -2의 (n-1)승 ~ +2의(n-1)승-1
+	// 박스 하나에 전구 8개
+
+	char a = 127;
+	printf("%d\n", a);
+	
+	short b = 32767;
+	printf("%d\n", b);
+
+	long c = 12345678;
+	printf("%d\n", c);
+
+}
