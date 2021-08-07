@@ -1,0 +1,215 @@
+8bit = 1byte
+2byte = 16bit
+1kb = 1024byte
+1025kb = 1mbyte
+1024m = 1G
+1024G = 1T
+
+#include "pch.h"
+#include <iostream>
+
+int main()
+{
+
+	printf("호랑이\n");
+
+	//ex1) if - else if - else
+	/*if (5<3)
+	{
+		printf("1");
+	}
+	else if (4!=4)
+	{
+		printf("2");
+	}
+	else
+	{
+		printf("3");
+	}*/
+
+	//ex2)
+	long num = 65;
+	if (num>=90)
+	{
+		printf("당신의 성적은 A");
+	}
+	else if (num>=80)
+	{
+		printf("당신의 성적은 B");
+	}
+	else if (num>=70)
+	{
+		printf("당신의 성적은 C");
+	}
+	else if (num >= 60)
+	{
+		printf("당신의 성적은 D");
+	}
+	else
+	{
+		printf("당신의 성적은 F");
+	}
+
+-----------------------------------------------------
+
+//ex3)
+	short a = 30;
+	printf("%d\n", a);
+
+	short b;
+	b = 100;
+	printf("%d\n", b);
+
+	b = a;
+	printf("%d %d\n", a, b);
+
+	b = b * a;
+	printf("%d %d\n", a, b);
+
+	a++;
+	printf("%d %d\n", a, b);
+
+	b--;
+	printf("%d %d\n", a, b);
+
+	// 1을 더할 때는 ++, --을 쓰는 것이 더 빠르다.
+	a = a + 1;
+	b = b - 1;
+	printf("%d %d\n", a, b);
+
+	a = -a;
+	printf("%d %d\n", a, b);
+
+	// b = b + 2
+	b += 2;
+	printf("%d %d\n", a, b);
+
+	a -= 10;
+	printf("%d %d\n", a, b);
+
+	a *= 10;
+	printf("%d %d\n", a, b);
+	
+	a /= 10;
+	printf("%d %d\n", a, b);
+
+	a %= 10;
+	printf("%d %d\n", a, b);
+
+-------------------------------------------------------
+
+//ex4)  swap 프로그램 
+	
+	long a = 10, b = 30;
+	printf("%d %d\n", a, b);
+
+	long t;
+	t = a;
+	a = b;
+	b = t;
+	printf("%d %d\n", a, b);
+
+--------------------------------------------------------
+
+//ex5)  작은 타입에 큰 타입을 넣는 것은 조심하자 
+	
+	//short a = 10;
+	//long b = 40000;
+	//printf("%d %d\n", a, b);
+
+	/*a = b;
+	printf("%d %d\n", a, b);*/
+
+	//b = a;
+	//printf("%d %d\n", a, b);
+
+	// 타입 캐스팅 
+	// 결과는 같지만 써주는 것이 좋다.
+	short a = 10;
+	long b = 30;
+	printf("%d %d\n", a, b);
+
+	//a = (short)b;
+	//printf("%d %d\n", a, b);
+
+	b = (long)a;
+	printf("%d %d\n", a, b);
+
+------------------------------------------------------
+
+//ex6) for문
+	
+	// a=0은 무조건 고정
+	// a<4 이것도 고정
+	// a++도 고정
+
+	for (short a = 0; a < 6; a++)
+	{
+		printf("호랑이%d \n",a);
+	}
+
+------------------------------------------------------
+
+	/*for (short a = 0; a < 7; a++)
+	{
+		printf("%d호랑이 \n", a);
+	}*/
+
+//ex7)
+
+//구구단
+	for (short a = 0; a < 10; a++)
+	{
+		printf("8 * %d = %d \n",  a, (8*a));
+	}
+
+------------------------------------------------------
+
+//ex8) 두 번째 형식
+
+	/*for (short a = 1; a <= 5 ; a++)
+	{
+		printf("호랑이%d\n", a);
+	}*/
+
+// 1부터 n까지의 합
+	long s = 0;
+	for (short a = 1; a <= 1000; a++)
+	{
+		s = s + a;
+		//printf("s:%d a:%d \n", s, a);
+	}
+	printf("총합:%d \n", s);
+
+------------------------------------------------------
+
+//ex9) 	
+	
+	/*for (short a = 0; a <3; a++)
+	{
+		printf("호랑이%d \n", a);
+		printf("코끼리%d \n",a);
+	}*/	
+	
+	// 한 문장일 때는 스코프가 없어도 실행이 된다.
+	// for문 끝에 ;을 붙히면 한 번은 출력되지만 잘못된 문장이다.
+
+	for (short a = 0; a < 3; a++)
+	{
+		printf("호랑이\n");
+	}
+
+	for (short a = 0; a < 10; a++)
+	{
+		printf("호랑이%d \n",a);
+		if (a%2==0)
+		{
+			printf("%d는 짝수입니다. \n",a);
+		}
+		else
+		{
+			printf("%d는 홀수입니다. \n",a);
+		}
+	}
+
+}
