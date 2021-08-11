@@ -1,0 +1,188 @@
+#include "pch.h"
+#include <iostream>
+#include <time.h>
+
+int main()
+{
+	srand((signed)time(NULL));
+	
+	long ar[10];
+	// 배열 초기화
+	for (long a = 0; a < 10; a++)
+	{
+		ar[a] = rand() % 15;
+	}
+	
+	// 배열 출력
+	for (long a = 0; a < 10; a++)
+	{
+		printf("%2d ", ar[a]);
+	}printf("\n\n");
+
+	// 배열 처음과 끝 합산
+	for (long a = 0; a < 10/2; a++)
+	{
+		printf("%2d ", ar[a] + ar[9 - a]);
+	}printf("\n\n");
+
+}
+
+----------------------------------------------------------
+// 배열 swap
+
+	long ar[2] = {30, 50};
+	printf("%d %d\n", ar[0], ar[1]);
+
+	long t1;
+	t1 = ar[0];
+	ar[0] = ar[1];
+	ar[1] = t1;
+	printf("%d %d\n", ar[0], ar[1]);
+
+----------------------------------------------------------
+// 역순 정렬
+
+	long ar[10];
+	// 배열 초기화
+	for (long a = 0; a < 10; a++)
+	{
+		ar[a] = a;
+	}
+	// 배열 출력
+	for (long a = 0; a < 10; a++)
+	{
+		printf("%2d ", ar[a]);
+	}printf("\n\n");
+
+// 처음 과 끝을 교환
+
+	for (long a = 0; a < 10/2; a++)
+	{
+		long t;
+		t = ar[a];
+		ar[a] = ar[9 - a];
+		ar[9 - a] = t;
+	}
+	for (long a = 0; a < 10; a++)
+	{
+		printf("%2d ", ar[a]);
+	}printf("\n\n");
+
+----------------------------------------------------------
+//ex1) 포인터
+	
+	short a;
+	short *b;
+	a = 10;
+	//*b = 20; // 이 코드는 사용할 수 없다.
+
+----------------------------------------------------------
+//ex2) 메모리 공유
+
+	short a = 10;
+	short *b;
+	b = &a; // 여기서 주소 공유
+	printf("%d %d\n", a, *b);
+	printf("%d %d\n", &a, b);
+
+	*b = 20; // *b는 메모리가 존재
+	printf("%d\n", a);
+
+	a = 999;
+	printf("%d\n", *b);
+
+----------------------------------------------------------
+//ex3) 포인터 변수는 가장 최근에 받은 주소를 단 한 개만 기억
+
+	short a = 10, b = 20;
+	short *c;
+	//*c = 30 //메모리가 없다.
+
+	c = &a;
+	printf("%d %d %d\n", a, b, *c);
+
+	*c = 30;
+	printf("%d %d %d\n", a, b, *c);
+
+	c = &b;
+	a = 999;
+	printf("%d %d %d\n", a, b, *c);
+
+	*c = 333;
+	printf("%d %d %d\n", a, b, *c);
+
+	// &b = &a; // 일반 변수는 공유, 할당을 할 수 없다.
+
+----------------------------------------------------------
+//ex4) 포인터끼리는 공유와 할당이 가능하다.
+
+	short a = 10;
+	short *b, *c;
+	b = &a;
+	c = b;
+	printf("%d %d %d\n", a, *b, *c);
+
+	*c = 100;
+	printf("%d %d %d\n", a, *b, *c);
+
+----------------------------------------------------------
+//ex5)
+
+	short a, *b;
+	short *c, d;
+	b = &a;
+	c = &d;
+	printf("%d %d\n", *b, *c);
+
+	*b = 0;
+	*c = 100;
+	printf("%d %d\n", a, d);
+
+	b = c;
+	printf("%d %d %d %d\n", a, *b, *c, d);
+
+----------------------------------------------------------
+//ex6)
+
+	short a = 10, b = 20;
+	short *c, *d;
+	c = &a;
+	d = &b;
+	printf("%d %d\n", *c, *d);
+	printf("%d %d\n", a, b);
+
+	short *t;
+	t = c;
+	c = d;
+	d = t;
+
+	printf("%d %d\n", *c, *d);
+	printf("%d %d\n", a, b); // a와 b의 값이 변경 된 것은 아니다.
+
+	c = &a;
+	printf("%d\n", *c);
+	c = &b;
+	printf("%d\n", *c);
+	c = d;
+	printf("%d\n", *c);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
