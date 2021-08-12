@@ -1,0 +1,224 @@
+// ex1)
+
+	short *a = NULL;
+	a = new short;
+	*a = 10;
+	printf("%d %p\n", *a, a);
+
+	delete a;
+
+----------------------------------------------------------------
+// ex2)
+
+	short *a, b = 10;
+	a = &b; // a는 b와 공유
+
+	a = new short; // b와 공유 해제
+	delete a; // 여기서 메모리를 지워야한다.
+
+	a = &b; // b와 공유
+	a = new short;
+	*a = b;
+	delete a;
+
+---------------------------------------------------------------
+// ex3)
+
+	short *a, b = 20, c[5];
+	a = c; // a = &c[0];
+	
+	for (short i = 0; i < 5; i++)
+	{
+		*(a + i) = i * 10;
+	}
+	for (short i = 0; i < 5; i++)
+	{
+		printf("%d %d ", a[i], c[i]);
+	}printf("\n\n");
+
+	// delete a; 
+	// 1. 일반 변수 메모리는 삭제할 수 없다. 
+	// 2. new와 짝이 아니다.
+
+	a = new short;
+	*a = c[3];
+	delete a;
+
+	a = &b;
+
+---------------------------------------------------------------
+// ex4) 1개 이상 할당
+
+	short *a;
+	a = new short;
+	delete a;
+
+	a = new short[5];
+	for (short i = 0; i < 5; i++)
+	{
+		*(a + i) = i;
+		printf("%d ", a[i]);
+	}printf("\n\n");
+	delete []a; // 5개 모두 해제
+
+---------------------------------------------------------------
+// ex5) 
+
+	for (short i = 0; i < 100; i++)
+	{
+		short *a = new short;
+		delete a;
+		short *b = new short[10000];
+		delete []b;
+	}
+
+---------------------------------------------------------------
+// ex6) 
+
+	{
+		short a = 10;
+		short *p = new short;
+		delete p;
+	}
+	// delete p; 여기서는 p를 사용할 수 없다.
+	
+	short *p;
+	{
+		p = new short[10];
+	}
+	delete []p;
+
+---------------------------------------------------------------
+// ex7) 
+
+	short ar[10];
+	short *br = new short[10];
+	delete []br;
+
+---------------------------------------------------------------
+// ex8) 
+
+	long input;
+	scanf_s("%d", &input);
+	printf("%d\n", input);
+
+	// short ar[input]; 배열 메모리에 변수를 넣을 수 없다.
+	
+	short *ar = new short[input]; // 지금은 넣을 수 있다.
+	for (short i = 0; i < input; i++)
+	{
+		ar[i] = rand() % 10;
+	}
+	for (short i = 0; i < input; i++)
+	{
+		printf("%2d ", ar[i]);
+	}printf("\n\n");
+	for (short i = 0; i < input/2; i++)
+	{
+		printf("%2d ", ar[i] + ar[input - 1 - i]);
+	}printf("\n\n");
+
+	delete []ar;
+
+---------------------------------------------------------------
+// ex9) 
+
+	// 일반 메모리: 정적 메모리 static
+	// 포인트: 동적 메모리 dynamic, 가변적
+
+	short a = 10;
+	long b = 20;
+	void *p; // 타입이 없다.
+	// 받는 타입에 구분이 없다.
+	p = &a;
+	p = &b;
+
+	short c;
+	//c= *p; // 에러 p의 타입을 모른다.
+
+---------------------------------------------------------------
+// ex10) 
+
+	short a = 10, b;
+	short *p = &a;
+	b = *p;
+	b = *(short *)p; // p의 주소를 short타입으로 보아라
+	b = (short)*p;
+	b = (short)*(short *)p; // 이것이 완벽한 문장
+	b = *p; // 이렇게 변환되었다.
+
+---------------------------------------------------------------
+// ex11) 
+
+	short a = 10;
+	long b = 20;
+	void *p; // 타입이 없다.
+	// 받는 타입에 구분이 없다.
+	p = &a;
+	p = &b;
+
+	short c;
+	//c= *p; // 에러 p의 타입을 모른다.
+	c = *(short *)p;
+	c = (short)*(short *)p; //앞에 (short)는 생략가능, 값의 타입을 알려준다.
+	
+	short *t;
+	t = (short *)p; // p의 주소 타입을 알려준다.
+
+---------------------------------------------------------------
+// ex12) c언어 문법(메모리 할당)
+// malloc(메모리 수)
+
+	short *a;
+	a = (short *)malloc(2);
+	
+	long *b;
+	b = (long *)malloc(4);
+
+	char *c;
+	c = (char *)malloc(1);
+
+	*a = 10;
+	*b = 20;
+	*c = 30;
+
+	// delete
+	free(a);
+	free(b);
+	free(c);
+
+	// 1개 이상
+	long *d;
+	d = (long *)malloc(4 * 12); // 12개
+	d = (long *)malloc(sizeof(long) * 12); 
+
+	for (short i = 0; i < 12; i++)
+	{
+		*(d + i) = i;
+	}
+	for (short i = 0; i < 12; i++)
+	{
+		printf("%2d ", d[i]);
+	}printf("\n\n");
+
+	free(d); // 1개 이상도 문법이 똑같다.
+
+	// sizeof: 타입의 크기를 알려준다.
+	printf("%d %d %d\n", sizeof(short), sizeof(long), sizeof(char));
+
+---------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
