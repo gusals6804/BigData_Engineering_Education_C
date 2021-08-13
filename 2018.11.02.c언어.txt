@@ -1,0 +1,207 @@
+//ex1)
+
+	short *a = new short;
+	// 사용했음
+	delete a;
+
+	short *b = new short[10];
+	// 사용했음
+	delete []b;
+
+------------------------------------------------------------
+//ex2)
+
+	short *a = new short[10];
+	short *b;
+
+	b = a;
+	for (short i = 0; i < 10; i++)
+	{
+		b[i] = i;
+		printf("%d ", a[i]);
+	}printf("\n\n");
+
+	delete []b; // b의 주소를 삭제해도 된다.
+
+------------------------------------------------------------
+//ex3)
+
+	short *a = new short[10];
+	// 포인트문법
+	for (short i = 0; i < 10; i++)
+	{
+		printf("%d %d\n", (a + i), *(a + i));
+	}
+	
+	printf("------------------------------------\n");
+	
+	// 배열문법
+	for (short i = 0; i < 10; i++)
+	{
+		printf("%d %d\n", &a[i], a[i]);
+	}
+
+	delete []a;
+
+------------------------------------------------------------
+//ex4)
+	
+	short ar[5] = { 0 };
+	for (short i = 0; i < 5; i++)
+	{
+		printf("%p %d ", &ar[i], ar[i]);
+	}printf("\n\n");
+
+	for (short i = 0; i < 5; i++)
+	{
+		printf("%p %d ", (ar + i), *(ar + i));
+	}
+
+------------------------------------------------------------
+//ex1) 속성을 모아놓은 것을 구조체라고 한다.
+	
+	short AppleColor = 10;
+	short ApplePrice = 20;
+	short AppleWeight = 30;
+
+	short BananaColor = 40;
+	short BananaPrice = 50;
+	short BananaWeight = 60;
+
+	short OrangeColor = 70;
+	short OrangePrice = 80;
+	short OrangeWeight = 90;
+
+------------------------------------------------------------
+//ex2) 구조체의 기본 틀
+// 구조체 이름은 모두 대문자, 스코프는 이름 옆에 바로 붙힌다.
+
+	struct FRUIT{
+		char color;
+		char price;
+		long weight;
+	};
+
+	FRUIT apple ,banana, orange; 
+	apple.color = 10;
+	apple.price = 20;
+	apple.weight = 30;
+
+	banana.color = 40;
+	banana.price = 50;
+	banana.weight = 60;
+
+	orange.color = 70;
+	orange.price = 80;
+	orange.weight = 90;
+
+	printf("%d %d %d\n", apple.color, banana.color, orange.color);
+
+------------------------------------------------------------
+#include "pch.h"
+#include <iostream>
+#pragma pack(1) // 1개 단위로 담는다.
+
+int main()
+{
+
+	// ex3) FRUIT은 사용자가 정의한 타입이다.
+	// 대입 연산자를 사용할 떄 타입이 꼭 같아야한다.
+
+	struct FRUIT {
+		char color;
+		short price;
+		long weight;
+	};
+	
+	// 선언과 동시에 초기화
+	FRUIT apple = {10, 20, 30};
+	printf("%d %d %d\n", apple.color, apple.price, apple.weight);
+
+	FRUIT banana = { 40, 50};
+	printf("%d %d %d\n", banana.color, banana.price, banana.weight);
+	
+	// FRUIT orange = { 70, 80, 90, 100 }; // 넘치는건 안된다.
+	FRUIT orange = { 70, 80, 90 };
+	printf("%d %d %d\n", orange.color, orange.price, orange.weight);
+
+	printf("%d\n", sizeof(long));
+	printf("%d\n", sizeof(FRUIT)); // 4의 배수만큼 준다.
+
+}
+
+------------------------------------------------------------
+// ex3)  
+	
+	struct FRUIT {
+		char color;
+		short price;
+		long weight;
+	};
+
+	FRUIT apple = { 10, 20, 30 };
+	FRUIT banana;
+	long orange;
+
+	banana = apple;
+	// 그대로 값이 복사가 된다.
+	printf("%d %d %d\n", banana.color, banana.price, banana.weight);
+
+	// orange = apple; 타입이 다르다.
+	
+	FRUIT a = { 10, 20, 30 };
+	FRUIT *b;
+	b = &a;
+
+	printf("%d\n", (*b).color);
+	// *이 없어도 주소가 아니라 값을 나타낸다.
+	printf("%d\n", b->color); // 위에 것과 같다.
+	printf("%p\n", &b->color); // weight의 주소, &은 b의 것이 아니라 weight의 것이다.
+
+------------------------------------------------------------
+// ex4)  
+	
+	struct FRUIT {
+		char color;
+		short price;
+		long weight;
+	};
+
+	FRUIT a = { 10, 20, 30 };
+	
+	// 공유
+	FRUIT *b;
+	b = &a;
+	b->color = 40;
+	b->price = 50;
+	b->weight = 60;
+	printf("%d\n", a.color);
+	printf("%p %p\n", &a.color, &b->color); //주소 출력
+
+	//할당
+	FRUIT *c;
+	c = new FRUIT;
+	c->color = 10;
+	c->price = 20;
+	c->weight = 30;
+	printf("%d %p\n", c->color, &c->color);
+
+	delete c;
+
+	c = new FRUIT;
+	c->color = 100;
+	
+	// 쌍방간 타입이 같다.
+	char *pp;
+	pp = &c->color;
+	printf("%d %d", *pp, c->color);
+	printf("%p %p\n", pp, &c->color);
+
+------------------------------------------------------------
+
+
+
+
+
+
+
